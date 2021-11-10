@@ -11,20 +11,20 @@ app.use(bodyParser.json());
 
 app.use(cors());
 const transport = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
+  port: 465,
+  host: "smtp.ionos.com",
   auth: {
-    user: "abdullashaikh36319@gmail.com",
-    pass: "Abdulla@786",
+    user: "htt@fahm-technologies.com",
+    pass: "Htt.fahmtechnologies",
   },
 });
 
-app.post("/send_mail", cors(), async (req, res) => {
-  let data = req.body;
+app.get("/send_mail", cors(), async (req, res) => {
+  // let data = req.body;
 
   let resData = await transport.sendMail({
-    from: "abdullashaikh36319@gmail.com",
-    to: "pankajfaliyachi5805@gmail.com",
+    from: "htt@fahm-technologies.com",
+    to: "abdullashaikh36319@gmail.com",
     subject: "test email",
     attachments: [
       {
@@ -40,7 +40,7 @@ app.post("/send_mail", cors(), async (req, res) => {
         font-size: 20px; 
         ">
         <h2>Here is your email!</h2>
-        <p>${data.text}</p>
+        <p>data</p>
     
         <p>All the best, Abdulla</p>
          </div>
