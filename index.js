@@ -22,18 +22,17 @@ const transport = nodemailer.createTransport({
 app.post("/send_mail", cors(), async (req, res) => {
   let data = req.body;
 
-  return await transport.sendMail(
-    {
-      from: "abdullashaikh36319@gmail.com",
-      to: "pankajfaliyachi5805@gmail.com",
-      subject: "test email",
-      attachments: [
-        {
-          filename: "test.pdf",
-          path: "https://httdemo.s3.ap-south-1.amazonaws.com/test.pdf",
-        },
-      ],
-      html: `<div className="email" style="
+  let resData = await transport.sendMail({
+    from: "abdullashaikh36319@gmail.com",
+    to: "pankajfaliyachi5805@gmail.com",
+    subject: "test email",
+    attachments: [
+      {
+        filename: "test.pdf",
+        path: "https://httdemo.s3.ap-south-1.amazonaws.com/test.pdf",
+      },
+    ],
+    html: `<div className="email" style="
         border: 1px solid black;
         padding: 20px;
         font-family: sans-serif;
@@ -46,25 +45,14 @@ app.post("/send_mail", cors(), async (req, res) => {
         <p>All the best, Abdulla</p>
          </div>
     `,
-    },
-    function (error, info) {
-      if (error) {
-        console.log(error);
-        // res("Email sent: " + info.response);
-      }
-      return {
-        statusCode: 200,
-        status: "SUCCESS",
-        body: info.response,
-      };
-      // console.log("Email sent: " + info.response);
-      // res("Email sent: " + info.response);
-    }
-  );
+  });
+  res.send({
+    statusCode: 200,
+    status: "SUCCESS",
+    body: resData,
+  });
 });
-app.get("/test", cors(), async (req, res) => {
-  res("Test");
-});
+
 app.listen(4000, () => {
   console.log("Server is listening on port 4000");
 });
