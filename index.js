@@ -62,7 +62,9 @@ app.post("/send_mail", cors(), async (req, res) => {
     }
   );
 });
-
+app.get("/test", cors(), async (req, res) => {
+  res("Test");
+});
 app.listen(4000, () => {
   console.log("Server is listening on port 4000");
 });
