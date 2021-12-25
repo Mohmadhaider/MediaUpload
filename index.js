@@ -53,6 +53,67 @@ app.get("/send_mail", cors(), async (req, res) => {
   });
 });
 
+app.post("/send_mail", cors(), async (req, res) => {
+  let data = req.body;
+
+  let resData = await transport.sendMail({
+    from: "htt@fahm-technologies.com",
+    to: data.mail,
+    subject: "test email",
+    attachments: [
+      {
+        filename: "test.pdf",
+        path: "https://httdemo.s3.ap-south-1.amazonaws.com/test.pdf",
+      },
+    ],
+    html: `<div className="email" style="
+        border: 1px solid black;
+        padding: 20px;
+        font-family: sans-serif;
+        line-height: 2;
+        font-size: 20px; 
+        ">
+        <h2>Here is your email!</h2>
+        <p>data</p>
+    
+        <p>All the best, Abdulla</p>
+         </div>
+    `,
+  });
+  res.send({
+    statusCode: 200,
+    status: "SUCCESS",
+    body: resData,
+  });
+});
+
+app.post("/send_activation_mail", cors(), async (req, res) => {
+  let data = req.body;
+
+  let resData = await transport.sendMail({
+    from: "htt@fahm-technologies.com",
+    to: data.mail,
+    subject: "Activation Link by Buyamia",
+    html: `<div className="email" style="
+        border: 1px solid black;
+        padding: 20px;
+        font-family: sans-serif;
+        line-height: 2;
+        font-size: 20px; 
+        ">
+        <h2>Click Here to Activate your Account!</h2>
+        <p>${data.token}</p>
+    
+         </div>
+    `,
+  });
+  res.send({
+    statusCode: 200,
+    status: "SUCCESS",
+    body: resData,
+  });
+});
+
 app.listen(4000, () => {
   console.log("Server is listening on port 4000");
 });
