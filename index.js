@@ -19,12 +19,12 @@ const transport = nodemailer.createTransport({
   },
 });
 
-app.get("/send_mail", cors(), async (req, res) => {
+app.post("/send_mail", cors(), async (req, res) => {
   // let data = req.body;
 
   let resData = await transport.sendMail({
     from: "htt@fahm-technologies.com",
-    to: "abdullashaikh36319@gmail.com",
+    to: data.mail,
     subject: "test email",
     attachments: [
       {
