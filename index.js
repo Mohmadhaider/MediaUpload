@@ -99,7 +99,7 @@ app.post("/send_activation_mail", cors(), async (req, res) => {
         font-size: 20px; 
         ">
         <h2>Click Here to Activate your Account!</h2>
-        <p>${data.token}</p>
+        <a href={https://axshlo8do5.execute-api.ap-south-1.amazonaws.com/dev/authenticationCheck/${data.token}}>Click me</p>
     
          </div>
     `,
