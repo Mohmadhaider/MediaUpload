@@ -53,19 +53,19 @@ app.get("/send_mail", cors(), async (req, res) => {
   });
 });
 
-app.post("/send_mail", cors(), async (req, res) => {
+app.post("/send_mail_activation_link", cors(), async (req, res) => {
   let data = req.body;
 
   let resData = await transport.sendMail({
     from: "htt@fahm-technologies.com",
     to: data.mail,
-    subject: "test email",
-    attachments: [
-      {
-        filename: "test.pdf",
-        path: "https://httdemo.s3.ap-south-1.amazonaws.com/test.pdf",
-      },
-    ],
+    subject: "Activation Link For Buyamia Seller",
+    // attachments: [
+    //   {
+    //     filename: "test.pdf",
+    //     path: "https://httdemo.s3.ap-south-1.amazonaws.com/test.pdf",
+    //   },
+    // ],
     html: `<div className="email" style="
         border: 1px solid black;
         padding: 20px;
@@ -73,10 +73,7 @@ app.post("/send_mail", cors(), async (req, res) => {
         line-height: 2;
         font-size: 20px; 
         ">
-        <h2>Here is your email!</h2>
-        <p>data</p>
-    
-        <p>All the best, Abdulla</p>
+        <a href=https://axshlo8do5.execute-api.ap-south-1.amazonaws.com/dev/authenticationCheck/${data.token}>Click Here</a>
          </div>
     `,
   });
