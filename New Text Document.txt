@@ -1,0 +1,6 @@
+
+http://ec2-13-126-109-93.ap-south-1.compute.amazonaws.com:4000/send_activation_mail
+{
+          "mail":"abdullashaikh36319@gmail.com",
+          "token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJmdW4td2l0aC1qd3RzIiwic3ViIjoiQXp1cmVEaWFtb25kIiwianRpIjoiMjU5Yjc5NjUtZDQ5OS00MzRkLWI1OGQtOTc5NThhN2YyNjkzIiwiaWF0IjoxNjQwNDMzNTYxLCJleHAiOjE2NDA0MzcxNjF9.Q3X1QWuM_e_lPoSwqh_cB8vYF564mCyVL8_Cx-pAR48"
+}
