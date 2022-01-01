@@ -14,8 +14,8 @@ const transport = nodemailer.createTransport({
   port: 465,
   host: "smtp.ionos.com",
   auth: {
-    user: "htt@fahm-technologies.com",
-    pass: "Htt.fahmtechnologies",
+    user: "buyamia@fahm-technologies.com",
+    pass: "buyamia@fahmtechnologies",
   },
 });
 

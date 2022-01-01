@@ -1,6 +1,33 @@
 
-http://ec2-13-126-109-93.ap-south-1.compute.amazonaws.com:4000/send_activation_mail
+https://axshlo8do5.execute-api.ap-south-1.amazonaws.com/dev/insertportaluser
 {
-          "mail":"abdullashaikh36319@gmail.com",
-          "token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJmdW4td2l0aC1qd3RzIiwic3ViIjoiQXp1cmVEaWFtb25kIiwianRpIjoiMjU5Yjc5NjUtZDQ5OS00MzRkLWI1OGQtOTc5NThhN2YyNjkzIiwiaWF0IjoxNjQwNDMzNTYxLCJleHAiOjE2NDA0MzcxNjF9.Q3X1QWuM_e_lPoSwqh_cB8vYF564mCyVL8_Cx-pAR48"
+       "companyrefid": 1,
+            "type": "b",
+            "usertype": "a",
+            "roles": 1,
+            "firstname": "Pankaj",
+            "middlename": "muthukumar",
+            "lastname": "Faliyachi",
+            "emailid": "abdullashaikhadasdnjwdnwqkjd@gmail.com",
+            "password": "Abdulla@123",
+            "authtoken": "test",
+            "address": "Maliwad",
+            "city": "vyara",
+            "state": "Gujarat",
+            "pincode": 394650,
+            "contactnumber": "9898989982",
+            "createdby": 1,
+            "createddate": "2021-12-09T12:53:08.317Z",
+            "updatedby": 1,
+            "updateddate": "2021-12-09T12:53:08.317Z",
+            "sellercontactpersonname":"Abdulla",
+            "sellerbusinessname":"Test",
+            "sellercompanytype":"T",
+            "sellerbusinesscategory":7,
+            "selleraddress":"Maliwad",
+            "sellerzipcode":394650,
+            "sellercity":"Vyara",
+            "sellerstate":"Gujarat",
+            "sellercountry":"India"
+
 }
