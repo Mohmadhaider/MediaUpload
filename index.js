@@ -23,7 +23,7 @@ app.post("/send_mail", cors(), async (req, res) => {
   // let data = req.body;
 
   let resData = await transport.sendMail({
-    from: "htt@fahm-technologies.com",
+    from: "buyamia@fahm-technologies.com",
     to: data.mail,
     subject: "test email",
     attachments: [
@@ -57,7 +57,7 @@ app.post("/send_mail_activation_link", cors(), async (req, res) => {
   let data = req.body;
 
   let resData = await transport.sendMail({
-    from: "htt@fahm-technologies.com",
+    from: "buyamia@fahm-technologies.com",
     to: data.mail,
     subject: "Activation Link For Buyamia Seller",
     // attachments: [
@@ -88,7 +88,7 @@ app.post("/send_activation_mail", cors(), async (req, res) => {
   let data = req.body;
 
   let resData = await transport.sendMail({
-    from: "htt@fahm-technologies.com",
+    from: "buyamia@fahm-technologies.com",
     to: data.mail,
     subject: "Activation Link by Buyamia",
     html: `<div className="email" style="
@@ -99,8 +99,11 @@ app.post("/send_activation_mail", cors(), async (req, res) => {
         font-size: 20px; 
         ">
         <h2>Click Here to Activate your Account!</h2>
-        <a href="https://axshlo8do5.execute-api.ap-south-1.amazonaws.com/dev/authenticationCheck/${data.token}">Click me</p>
-    
+      <a href="${
+        data.baseurl
+          ? baseurl
+          : "https://axshlo8do5.execute-api.ap-south-1.amazonaws.com/dev"
+      }/authenticationCheck/${data.token}">Click me</a>
          </div>
     `,
   });
