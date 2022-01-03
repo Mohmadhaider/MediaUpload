@@ -86,6 +86,11 @@ app.post("/send_mail_activation_link", cors(), async (req, res) => {
 
 app.post("/send_activation_mail", cors(), async (req, res) => {
   let data = req.body;
+  console.log("baseurl" in data);
+  let url = "https://axshlo8do5.execute-api.ap-south-1.amazonaws.com/dev";
+  if ("baseurl" in data) {
+    url = data.baseurl;
+  }
 
   let resData = await transport.sendMail({
     from: "buyamia@fahm-technologies.com",
@@ -99,11 +104,7 @@ app.post("/send_activation_mail", cors(), async (req, res) => {
         font-size: 20px; 
         ">
         <h2>Click Here to Activate your Account!</h2>
-      <a href="${
-        data.baseurl
-          ? baseurl
-          : "https://axshlo8do5.execute-api.ap-south-1.amazonaws.com/dev"
-      }/authenticationCheck/${data.token}">Click me</a>
+      <a href="${url}/authenticationCheck/${data.token}">Click me</a>
          </div>
     `,
   });
