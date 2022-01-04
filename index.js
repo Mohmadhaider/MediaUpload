@@ -95,7 +95,7 @@ app.post("/send_activation_mail", cors(), async (req, res) => {
   let resData = await transport.sendMail({
     from: "buyamia@fahm-technologies.com",
     to: data.mail,
-    subject: "Activation Link by Buyamia",
+    subject: " Your account activation link",
     html: `<div className="email" style="
         border: 1px solid black;
         padding: 20px;
@@ -103,8 +103,8 @@ app.post("/send_activation_mail", cors(), async (req, res) => {
         line-height: 2;
         font-size: 20px; 
         ">
-        <h2>Click Here to Activate your Account!</h2>
-      <a href="${url}/authenticationCheck/${data.token}">Click me</a>
+        <h2>Click on below link to activate your account and explore great market place.</h2>
+      <a href="${url}/authenticationCheck/${data.token}">Click here</a>
          </div>
     `,
   });
