@@ -1,5 +1,8 @@
 const express = require("express");
 const app = express();
+const aws = require("aws-sdk");
+const multer = require("multer");
+const multerS3 = require("multer-s3");
 require("dotenv").config();
 
 const bodyParser = require("body-parser");
@@ -112,6 +115,34 @@ app.post("/send_activation_mail", cors(), async (req, res) => {
     statusCode: 200,
     status: "SUCCESS",
     body: resData,
+  });
+});
+
+//UploadMedia
+aws.config.update({
+  secretAccessKey: "WBA4IXFGohXFDtnJXDo+6vvC4ZarAxKBQOT479HV",
+  accessKeyId: "AKIA6EZJWVSNTYWAFXCI",
+  region: "ap-south-1",
+});
+
+const s3 = new aws.S3();
+
+var upload = multer({
+  storage: multerS3({
+    s3: s3,
+    acl: "public-read",
+    bucket: "buyamia-seller-media",
+    key: function (req, file, cb) {
+      cb(null, file.originalname);
+    },
+  }),
+});
+
+app.post("/upload", upload.array("file", 1), async function (req, res, next) {
+  await res.send({
+    statusCode: 200,
+    status: "True",
+    body: [],
   });
 });
 
