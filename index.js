@@ -22,6 +22,8 @@ const transport = nodemailer.createTransport({
   },
 });
 
+let filename = "";
+
 app.post("/send_mail", cors(), async (req, res) => {
   // let data = req.body;
 
@@ -133,16 +135,27 @@ var upload = multer({
     acl: "public-read",
     bucket: "buyamia-seller-media",
     key: function (req, file, cb) {
-      cb(null, file.originalname);
+      let ext =
+        file.originalname.split(".")[file.originalname.split(".").length - 1];
+      cb(
+        null,
+        filename + "_" + Date.now().toString() + "." + ext.toLowerCase()
+      );
     },
   }),
 });
 
-app.post("/upload", upload.array("file", 1), async function (req, res, next) {
-  await res.send({
-    statusCode: 200,
-    status: "True",
-    body: [],
+app.post("/upload/:sid", async function (req, res, next) {
+  filename = req.params.sid;
+  upload.array("file", 1)(req, res, async () => {
+    return await res.send({
+      statusCode: 200,
+      status: "True",
+      body: req.files.map((file) => ({
+        location: file.location,
+        name: file.key,
+      })),
+    });
   });
 });
 
