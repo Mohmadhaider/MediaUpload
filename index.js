@@ -151,11 +151,12 @@ var upload = multer({
       );
     },
   }),
-});
+}).array("file", 10);
 
 app.post("/upload/:sid", async function (req, res, next) {
   filename = req.params.sid;
-  upload.array("file", 1)(req, res, async () => {
+  upload(req, res, async () => {
+    console.log(req.files);
     return await res.send({
       statusCode: 200,
       status: "True",
