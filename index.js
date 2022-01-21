@@ -13,6 +13,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(cors());
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader("Access-Control-Expose-Headers", "*")
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  // res.setHeader("Content-Type", 'application/json')
+  next();
+});
+
 const transport = nodemailer.createTransport({
   port: 465,
   host: "smtp.ionos.com",
@@ -158,6 +166,18 @@ app.post("/upload/:sid", async function (req, res, next) {
     });
   });
 });
+
+
+app.get("/", async function (req, res) {
+    return await res.send({
+      statusCode: 200,
+      status: "True",
+      body: {
+        message: "Server is running :)"
+      }
+    });
+});
+
 
 app.listen(4000, () => {
   console.log("Server is listening on port 4000");
